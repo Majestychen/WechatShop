@@ -9,7 +9,10 @@
 namespace app\api\model;
 
 
-class Banner
+use think\Db;
+use think\Model;
+
+class Banner extends Model
 {
     /**
      * function:获取banner信息
@@ -17,6 +20,11 @@ class Banner
      */
     public static function getBannerByID($id)
     {
-        return null;
+        $result = Db::table('banner_item')
+            ->where(function ($query) use ($id) {
+                $query->where('banner_id', '=', $id);
+            })
+            ->select();
+        return $result;
     }
 }
