@@ -15,6 +15,15 @@ use think\Model;
 class Banner extends Model
 {
     /**
+     * function:关联映射
+     * @author yumeng <yumengkj@yeah.net>
+     */
+    public function items()
+    {
+        return $this->hasMany("BannerItem", 'banner_id', 'id');
+    }
+
+    /**
      * function:获取banner信息
      * @author yumeng <yumengkj@yeah.net>
      */
